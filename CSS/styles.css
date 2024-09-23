@@ -21,10 +21,12 @@
       border: 1px solid rgba(0, 0, 0, 0.6);
       border-radius: 30px;
       margin-left: 10%;
+     
       
       
   } 
 
+ 
 
 
   input {
@@ -96,7 +98,9 @@ body {
     height: 100vh;
     margin-top: 5%;
     margin-bottom: 5%;
+
 }
+
 
 .weather-dashboard {
     /* background-color: rgba(0, 0, 0, 0.6); */
@@ -275,6 +279,7 @@ height: 2vh;
     border-radius: 15px;
     margin-top: 3%;
     width: 95%;
+    height: 40%;
     margin-left: 3%;
    
 }
@@ -325,3 +330,15 @@ height: 2vh;
         grid-template-columns: 1fr;
     } }
 
+
+.copyright-item {
+    padding-right: 5%;
+    text-align: right;
+}
+
+#google_translate_element {
+    width: 10%;
+    height: 3vh;
+    padding-top: 87%;
+    margin-left: 105%;
+}
