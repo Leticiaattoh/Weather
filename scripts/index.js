@@ -128,9 +128,6 @@
 // }
 
 
-
-
-
 const apiKey = 'afeac74e32ec7a2e7aa03a6a6d713e31'; // Replace with your OpenWeather API key
 
 // Fetch Current Weather Data
@@ -259,3 +256,76 @@ function getWeatherIcon(code) {
     };
     return weatherIcons[code] || "❓";
 }
+// Responsive adjustments based on window size
+function adjustLayoutForScreenSize() {
+    const screenWidth = window.innerWidth;
+
+    // For smaller screens (mobile)
+    if (screenWidth <= 768) {
+        document.body.style.flexDirection = 'column';  // Stack the left and right sections
+        adjustForecastItemsLayout('column');  // Stack forecast items
+        adjustFontSize('small');
+    } else {
+        document.body.style.flexDirection = 'row';  // Align left and right sections side by side
+        adjustForecastItemsLayout('row');  // Arrange forecast items in rows
+        adjustFontSize('normal');
+    }
+}
+
+// Adjust forecast items (hourly and daily) based on screen size
+function adjustForecastItemsLayout(direction) {
+    const forecastItems = document.querySelectorAll('.forecast-item, .forecast-day');
+    forecastItems.forEach(item => {
+        item.style.flexDirection = direction;
+        if (direction === 'column') {
+            item.style.margin = '5px 0';  // Adjust margins for stacked layout
+        } else {
+            item.style.margin = '0 5px';  // Adjust margins for row layout
+        }
+    });
+}
+
+// Dynamically adjust font sizes based on screen size
+function adjustFontSize(size) {
+    const tempElement = document.querySelector('.temperature');
+    const conditionElement = document.querySelector('.condition');
+    
+    if (size === 'small') {
+        tempElement.style.fontSize = '2em';  // Smaller font for mobile
+        conditionElement.style.fontSize = '1.2em';
+    } else {
+        tempElement.style.fontSize = '3em';  // Normal font for larger screens
+        conditionElement.style.fontSize = '1.5em';
+    }
+}
+
+// Event listener for screen resize
+window.addEventListener('resize', adjustLayoutForScreenSize);
+
+// Initial check on page load
+window.onload = adjustLayoutForScreenSize;
+
+// Fetch weather data using existing logic
+document.querySelector('.button1').addEventListener('click', async () => {
+    const city = document.querySelector('#city-input').value;
+    if (city) {
+        // Fetch and display data
+        await fetchCurrentWeather(city);
+        await fetchHourlyForecast(city);
+        await fetchDailyForecast(city);
+        await fetchWindData(city);
+
+        // Fetch UV index using coordinates from the current weather
+        const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
+        const currentWeatherData = await currentWeatherResponse.json();
+        if (currentWeatherData.cod === 200) {
+            const lat = currentWeatherData.coord.lat;
+            const lon = currentWeatherData.coord.lon;
+            await fetchUVIndex(lat, lon);
+        }
+    } else {
+        alert('Please enter a city name');
+    }
+});
+
+

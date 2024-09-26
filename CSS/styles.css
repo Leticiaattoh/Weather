@@ -1,5 +1,14 @@
 
-  .header-right {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+ 
+ 
+ 
+ .header-right {
 
       background-color:  rgba(0, 0, 0, 0.6);
       width: 49vw;
@@ -55,12 +64,7 @@
 
 
   
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
+
 
 
 .video-background {
@@ -325,12 +329,6 @@ height: 2vh;
 
 
 
-@media (max-width: 768px) {
-    .weather-dashboard {
-        grid-template-columns: 1fr;
-    } }
-
-
 .copyright-item {
     padding-right: 5%;
     text-align: right;
@@ -344,3 +342,135 @@ height: 2vh;
 }
 
 
+
+ @media (max-width: 768px) {
+    .weather-dashboard {
+        grid-template-columns: 1fr;
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+        /* padding-right: 40%; */
+        font-size: 0.7rem;
+        width: 50vw;
+        height: 95vh;
+
+     } 
+
+    
+    .weather-dashboard.precipitation{
+        margin-left: auto;
+        margin-right: auto;
+        width: 50vw;
+        font-size: 0.7rem; 
+        padding: 10%;
+
+
+       
+    }
+
+     .weather-dashboard.feels-like{
+        /* margin-left: auto;
+        margin-right: auto; */
+        width: 30vw;
+        padding: 20%;
+        font-size: 0.7rem;
+        
+       
+       
+    }
+
+    .details{
+        width:10vw ;
+    }
+    .header-left {
+        background-color:  rgba(0, 0, 0, 0.6);
+        width: 49vw;
+        float: left;
+        height: 100vh;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        border-radius: 30px;
+        margin-right: 10%;
+        
+    } 
+
+    .header-right{
+        background-color:  rgba(0, 0, 0, 0.6);
+        width: 49vw;
+        float: right;
+        height: 100vh;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        border-radius: 30px;
+        margin-right: 10%;
+    
+    }
+
+    .extra-info{
+        font-size: 0.8rem;
+        /* margin-top: 3%; */
+    /* width: 95%; */
+    /* height: 30%; */
+    /* margin-right: 10%; */
+
+   
+    
+    }
+
+    .extra-info .uv-index{
+        width: 20vw;
+        font-size: 0.6rem;
+        padding: 2vw;
+        
+    }
+
+    .extra-info .progress {
+        width: 10vw;
+    }
+
+
+    .hourly-forecast{
+        font-size: 0.8rem;
+    
+    }
+    
+    
+    
+    *{
+        flex-direction: row;
+        flex-wrap: wrap;
+         box-sizing: border-box;
+        
+    
+    
+    }
+    .header-right {
+        margin-right: 10%;
+    }
+
+
+    .translator {
+    
+
+    }
+    
+
+    .wind {
+        font-size: 0.6rem;
+        width: 11vw;
+        height: 20vh;
+
+    }
+
+    .wind2 {
+        font-size: 1rem;
+    }
+    
+    
+
+
+} 
+
+
+
+
+
+
+  
